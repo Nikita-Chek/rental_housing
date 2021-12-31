@@ -1,0 +1,4 @@
+.PHONY:
+
+push:
+	docker push
