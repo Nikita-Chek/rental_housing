@@ -1,22 +1,22 @@
 version: '3'
 
 services:
-  django_backend:
-    container_name: django_backend
-    build: ./django_backend
+  backend:
+    container_name: backend
+    build: ./backend
     stdin_open: true
     tty: true
     volumes:
-      - ./django_backend:/app/django/
+      - ./backend:/app/django/
     ports:
       - 8000:8000
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
    
-  react_frontend:
-    build: ./react_frontend
+  frontend:
+    build: ./frontend
     ports:
       - 3000:3000
     command: ["npm", "start"]
     
     depends_on:
-      - django_backend
+      - backend
